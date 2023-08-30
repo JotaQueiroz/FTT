@@ -9,7 +9,7 @@ class Personagem:
         self.programa = programa
         self.animador = animador
 
-# Definir função de inicio
+# Definir função de apresentação
     def apresentar(self):
         print(f"Nome: {self.nome}")
         print(f"Descrição: {self.descricao}")
@@ -32,6 +32,7 @@ def main():
     personagens = []
 
     while True:
+    # Crio layout de inicio    
         print("\n1 - Criar personagem")
         print("2 - Mostrar personagens")
         print("3 - Sair")
