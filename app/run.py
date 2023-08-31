@@ -1,10 +1,10 @@
-# Importo a biblioteca Flask para criação da API
-from flask import Flask
+from flask import Flask, request, jsonify
+
 
 app = Flask(__name__)
-# Crio uma classe pra incluir personagens
 
-@app.route("/")
+
+# Crio uma classe pra personagens
 class Personagem:
 # Definir função init
     def __init__(self, nome, descricao, imagem, programa, animador):
@@ -15,6 +15,7 @@ class Personagem:
         self.animador = animador
 
 # Definir função de apresentação
+    @app.route("/chars/", methods = ["POST"])
     def apresentar(self):
         print(f"Nome: {self.nome}")
         print(f"Descrição: {self.descricao}")
@@ -23,6 +24,7 @@ class Personagem:
         print(f"Animador: {self.animador}")
 
 # Definir função de criação de personagem
+@app.route("/chars/", methods = ["GET"])
 def criar_personagem():
     nome = input("Digite o nome do personagem: ")
     descricao = input("Digite a descrição do personagem: ")
@@ -30,6 +32,7 @@ def criar_personagem():
     programa = input("Digite o programa do personagem: ")
     animador = input("Digite o animador do personagem: ")
     return Personagem(nome, descricao, imagem, programa, animador)
+
 
 
 def main():
@@ -63,4 +66,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    app.run( debug = True )
+    
+    
