@@ -1,5 +1,10 @@
+# Importo a biblioteca Flask para criação da API
+from flask import Flask
+
+app = Flask(__name__)
 # Crio uma classe pra incluir personagens
 
+@app.route("/")
 class Personagem:
 # Definir função init
     def __init__(self, nome, descricao, imagem, programa, animador):
