@@ -5,11 +5,11 @@ app = Flask(__name__)
 
 personagens = []
 
-@app.route('/')       
+@app.route('/personagem')       
 def inicio():
     return jsonify(personagens)
 
-@app.route('/criar', methods = ['POST'])
+@app.route('/personagem/criar', methods = ['POST'])
 def criar():
     data = request.get_json()
     if data:
