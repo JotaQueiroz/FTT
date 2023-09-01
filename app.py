@@ -1,36 +1,29 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, jsonify
 
 
 app = Flask(__name__)
 
+personagens = []
 
-personagens = [{ 'nome': 'Jeff' , 'descricao': 'alto e magro' , 'imagem': 'C/Imagens' , 'programa': 'Egel' , 'animador': 'Matheus' }]
-
-
-class Personagem:
-    def __init__(self, nome, descricao, imagem, programa, animador ):
-        self.nome = nome
-        self.descricao = descricao
-        self.imagem = imagem
-        self.programa = programa
-        self.animador = animador
-        
-@app.route('/', methods = ['GET'])       
+@app.route('/')       
 def inicio():
-    return render_template('index.html', personagens=personagens)
+    return jsonify(personagens)
 
 @app.route('/criar', methods = ['POST'])
 def criar():
-    nome = request.form.get('nome')
-    descricao = request.form.get('descricao')
-    imagem = request.form.get('imagem')
-    programa = request.form.get('programa')
-    animador =  request.form.get('animador')
-    
-    personagens = Personagem(nome, descricao, imagem, programa, animador )
-    personagens.append(personagens)
-    
-    return redirect(url_for(inicio))
+    data = request.get_json()
+    if data:
+        personagem = {
+            "name": data.get('name'),
+            "description": data.get('description'),
+            "image": data.get('image'),
+            "program": data.get('program'),
+            "animator": data.get('animator')
+        }
+        personagens.append(personagem)
+        return jsonify({"message": "Personagem criado com sucesso!"}), 201
+    else:
+        return jsonify({"message": "Error"}), 400
 
 if __name__ == '__main__':
     app.run( debug = True )
