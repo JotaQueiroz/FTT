@@ -1,15 +1,16 @@
 Tarefas = []
 
 def adicionar():
-    add = input("Qual tarefa deseja adicionar?")
+    add = input("Qual tarefa deseja adicionar? ")
     Tarefas.append(add)
-    print(f"Tarefa:'{add}' adicionado com sucesso!")
+    print(f"Tarefa:'{add}', adicionado com sucesso!")
     
 def listar():
     print("Lista de Tarefas:")
     print("-"*17)
-    for i, add in enumerate(Tarefas):
-        print(f"(i), {add}")
+    for i, add in enumerate(Tarefas, start = 1):
+        print(f"{i} - {add}")
+    print("-"*17)
         
 def excluir():
     listar()
