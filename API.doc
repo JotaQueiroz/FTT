@@ -1,0 +1,53 @@
+Documentação da API de Personagens
+
+    Introdução:
+
+         A API de personagens, fornece uma lista de personagens, podendo: Inserir, Consultar e Excluir.
+
+    Autenticação:
+
+        Para ter acesso, é necessário a URL chave
+
+    Endopoint:
+
+        Obter personagens
+
+        - URL: 'http://127.0.0.1:5000/personagem'
+        - Método HTTP: GET
+        - Descrição: Retorna a lista de personagens criados
+        - Exemplo de solicitação: 
+            'http://127.0.0.1:5000/Personagem'
+
+        - Exemplo de resposta:
+
+
+
+        Criar personagem
+
+        - URL: 'http://127.0.0.1:5000/personagem/criar'
+        - Método HTTP: POST
+        - Descrição: Insera personagem nas listas
+        - Parâmetro de solicitação:
+            - 'Nome' (string) Nome dado pro personagem
+            - 'Descrição' (string) Descrição do personagem
+            - 'Imagem' (string) Link da imagem
+            - 'Programa' (string) Nome do programa geral
+            - 'Animador' (string) nome do animador do personagem
+        - Exemplo de solicitação:
+            'http://127.0.0.1:5000/Personagem'
+        - Exemplo de retorno:
+        """ 
+            {
+                'nome': 'Mark'
+                'Descrição': 'Alto e magro'
+                'Imagem': 'C:\Users\ADM\Pictures'
+                'Programa': 'Programa Egel'
+                'Animador': 'Arthur'
+            }
+        """
+        
+    
+
+
+
+ 
