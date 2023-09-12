@@ -60,4 +60,7 @@ while True:
     elif opcao == '4':
         break
     else:
-        print("Opção invalida!")
+        os.system("cls")
+        print("\033[31mOpção invalida! Tente novamente.\033[m")
+        time.sleep(1.5)
+        os.system("cls")
