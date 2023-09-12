@@ -1,18 +1,31 @@
+import os, time
+
 # Lista para inclusão de tarefas
 Tarefas = []
 
 # Função para adcionar tarefas a lista
 def adicionar():
+    os.system("cls")
     add = input("Qual tarefa deseja adicionar? ")
+    os.system("cls")
     Tarefas.append(add)
-    print(f"Tarefa:'{add}', adicionado com sucesso!")
+    print(f"\033[32mTarefa:'{add}', adicionado com sucesso!\033[m")
+    time.sleep(1.5)
+    os.system("cls")
+
 
 # Função para listar as tarefas   
 def listar():
-    print("Lista de Tarefas:")
+    os.system("cls")
+    print("LISTA DE TAREFAS:")
     print("-"*17)
-    for i, add in enumerate(Tarefas, start = 1):
-        print(f"{i} - {add}")
+    if len(Tarefas) == 0:
+        print("Você não possue nenhuma tarefa na sua lista.")
+        print("Adicione tarefas à sua lista na opção '1'")
+
+    else:
+        for i, add in enumerate(Tarefas, start = 1):
+            print(f"\033[33m{i} - {add}\033[m")
     print("-"*17)
 
 # Função para excluir as tarefas        
@@ -22,7 +35,10 @@ def excluir():
     
     if 0 <= select < len(Tarefas):
         remove = Tarefas.pop(select)
-        print("Tarefa removida com sucesso!")
+        os.system("cls")
+        print("\033[31mTarefa removida com sucesso!\033[m")
+        time.sleep(1.5)
+        os.system("cls")
     else:
         print("Escolha inexistente!")
 
